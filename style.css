@@ -1,9 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #f0e6d2; /* لون خلفية الموقع */
+    color: #5a3a22; /* لون النص الرئيسي */
     text-align: center;
     padding: 20px;
+    margin: 0;
 }
 
 .hidden {
@@ -13,33 +14,71 @@ body {
 .container {
     max-width: 600px;
     margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff; /* لون خلفية المحتوى */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.site-title {
+    font-size: 2.5rem;
+    color: #5a3a22; /* لون العنوان */
+    margin-bottom: 20px;
 }
 
 .card {
-    background-color: #fff;
+    background-color: #ffffff;
+    border: 2px solid #5a3a22; /* لون حدود البطاقة */
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
+    margin-top: 20px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .user-image {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    margin-bottom: 15px;
+    border: 2px solid #5a3a22; /* لون حدود الصورة */
 }
 
-.barcode {
-    height: 50px;
-    background-color: #000;
-    margin: 20px 0;
+.card-title {
+    font-size: 1.5rem;
+    color: #5a3a22; /* لون عنوان البطاقة */
+    font-weight: bold;
+}
+
+.card-info {
+    text-align: right;
+}
+
+.card-info h2 {
+    font-size: 1.8rem;
+    color: #5a3a22; /* لون الاسم */
+    margin-bottom: 10px;
+}
+
+.card-info p {
+    font-size: 1.2rem;
+    color: #5a3a22; /* لون النص */
+    margin: 5px 0;
 }
 
 .security-strip {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: #ff8c42; /* لون الشريط البرتقالي */
+    color: #ffffff; /* لون النص على الشريط */
     padding: 10px;
     font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
     animation: moveStrip 2s infinite;
 }
 
@@ -47,4 +86,19 @@ body {
     0% { transform: translateX(-10px); }
     50% { transform: translateX(10px); }
     100% { transform: translateX(-10px); }
+}
+
+button {
+    background-color: #5a3a22; /* لون الخلفية للأزرار */
+    color: #ffffff; /* لون النص على الأزرار */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #ff8c42; /* لون الخلفية عند التمرير */
 }
