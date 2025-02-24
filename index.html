@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بطاقة يوم التأسيس</title>
+    <title>بطاقة تعريف</title>
     <link rel="stylesheet" href="style.css">
     <!-- مكتبة html2canvas لتحويل البطاقة إلى صورة -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -12,9 +12,11 @@
 </head>
 <body>
     <div class="container">
+        <h1 class="site-title">بطاقة تعريف</h1>
+
         <!-- تسجيل الدخول -->
         <div id="login-section">
-            <h1>تسجيل الدخول</h1>
+            <h2>تسجيل الدخول</h2>
             <form id="login-form">
                 <input type="email" id="email" placeholder="البريد الإلكتروني" required>
                 <input type="password" id="password" placeholder="كلمة المرور" required>
@@ -25,7 +27,7 @@
 
         <!-- إنشاء حساب -->
         <div id="register-section" class="hidden">
-            <h1>إنشاء حساب</h1>
+            <h2>إنشاء حساب</h2>
             <form id="register-form">
                 <input type="text" id="name" placeholder="الاسم" required>
                 <input type="email" id="new-email" placeholder="البريد الإلكتروني" required>
@@ -37,26 +39,25 @@
 
         <!-- إنشاء البطاقة -->
         <div id="card-section" class="hidden">
-            <h1>إنشاء بطاقة يوم التأسيس</h1>
+            <h2>إنشاء بطاقة تعريف</h2>
             <form id="card-form">
                 <input type="text" id="card-name" placeholder="الاسم" required>
-                <input type="text" id="card-id" placeholder="رقم الهوية" required>
-                <input type="text" id="card-issue-date" placeholder="تاريخ الإصدار" required>
-                <input type="text" id="card-expiry-date" placeholder="تاريخ الانتهاء" required>
                 <button type="submit">إنشاء البطاقة</button>
             </form>
 
             <!-- معاينة البطاقة -->
             <div id="card-preview" class="hidden">
                 <div class="card">
-                    <img src="assets/images/user.png" alt="صورة المستخدم" class="user-image">
+                    <div class="card-header">
+                        <img src="assets/images/user.png" alt="صورة المستخدم" class="user-image">
+                        <div class="card-title">بطاقة تعريف</div>
+                    </div>
                     <div class="card-info">
                         <h2 id="preview-name">الاسم</h2>
-                        <p id="preview-id">رقم الهوية: </p>
-                        <p id="preview-issue-date">تاريخ الإصدار: </p>
-                        <p id="preview-expiry-date">تاريخ الانتهاء: </p>
+                        <p id="preview-id">رقم التعريف: <span id="unique-id"></span></p>
+                        <p id="preview-issue-date">تاريخ الإصدار: <span id="issue-date"></span></p>
+                        <p id="preview-expiry-date">تاريخ الانتهاء: <span id="expiry-date"></span></p>
                     </div>
-                    <div class="barcode"></div>
                     <div class="security-strip">يوم التأسيس</div>
                 </div>
                 <button id="download-png">تحميل كصورة</button>
