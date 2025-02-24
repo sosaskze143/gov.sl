@@ -1,6 +1,23 @@
 // تهيئة jsPDF
 const { jsPDF } = window.jspdf;
 
+// إنشاء رقم تعريف تلقائي غير مكرر
+function generateUniqueId() {
+    return Math.floor(100000 + Math.random() * 900000); // رقم عشوائي مكون من 6 أرقام
+}
+
+// إنشاء تواريخ تلقائية
+function generateDates() {
+    const issueDate = new Date();
+    const expiryDate = new Date();
+    expiryDate.setFullYear(issueDate.getFullYear() + 1); // تاريخ الانتهاء بعد سنة من تاريخ الإصدار
+
+    return {
+        issueDate: issueDate.toLocaleDateString('ar-SA'), // تنسيق التاريخ بالعربية
+        expiryDate: expiryDate.toLocaleDateString('ar-SA'),
+    };
+}
+
 // تسجيل الدخول وإنشاء الحساب
 document.getElementById('login-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -35,15 +52,16 @@ function showCardSection() {
 document.getElementById('card-form').addEventListener('submit', function (e) {
     e.preventDefault();
     const cardName = document.getElementById('card-name').value;
-    const cardId = document.getElementById('card-id').value;
-    const issueDate = document.getElementById('card-issue-date').value;
-    const expiryDate = document.getElementById('card-expiry-date').value;
+
+    // إنشاء رقم تعريف وتواريخ تلقائية
+    const uniqueId = generateUniqueId();
+    const { issueDate, expiryDate } = generateDates();
 
     // عرض البطاقة
     document.getElementById('preview-name').textContent = cardName;
-    document.getElementById('preview-id').textContent = `رقم الهوية: ${cardId}`;
-    document.getElementById('preview-issue-date').textContent = `تاريخ الإصدار: ${issueDate}`;
-    document.getElementById('preview-expiry-date').textContent = `تاريخ الانتهاء: ${expiryDate}`;
+    document.getElementById('unique-id').textContent = uniqueId;
+    document.getElementById('issue-date').textContent = issueDate;
+    document.getElementById('expiry-date').textContent = expiryDate;
     document.getElementById('card-preview').classList.remove('hidden');
 });
 
@@ -61,17 +79,9 @@ document.getElementById('download-png').addEventListener('click', function () {
 document.getElementById('download-pdf').addEventListener('click', function () {
     const cardElement = document.querySelector('.card');
     html2canvas(cardElement).then((canvas) => {
-        const imgData = canvas.toDataURL('image/png'); // تحويل البطاقة إلى صورة
-        const doc = new jsPDF(); // إنشاء كائن PDF جديد
-
-        // إضافة الصورة إلى PDF
-        doc.addImage(imgData, 'PNG', 10, 10, 180, 100); // (الصورة، النوع، X، Y، العرض، الارتفاع)
-
-        // إضافة نص إضافي (اختياري)
-        doc.setFontSize(12);
-        doc.text('بطاقة يوم التأسيس', 10, 8);
-
-        // حفظ الملف
-        doc.save('card.pdf'); // اسم الملف الذي سيتم تنزيله
+        const imgData = canvas.toDataURL('image/png');
+        const doc = new jsPDF();
+        doc.addImage(imgData, 'PNG', 10, 10, 180, 100);
+        doc.save('card.pdf');
     });
 });
