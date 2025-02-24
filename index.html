@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة يوم التأسيس</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- تسجيل الدخول -->
+        <div id="login-section">
+            <h1>تسجيل الدخول</h1>
+            <form id="login-form">
+                <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+                <input type="password" id="password" placeholder="كلمة المرور" required>
+                <button type="submit">تسجيل الدخول</button>
+            </form>
+            <p>ليس لديك حساب؟ <a href="#" id="register-link">إنشاء حساب</a></p>
+        </div>
+
+        <!-- إنشاء حساب -->
+        <div id="register-section" class="hidden">
+            <h1>إنشاء حساب</h1>
+            <form id="register-form">
+                <input type="text" id="name" placeholder="الاسم" required>
+                <input type="email" id="new-email" placeholder="البريد الإلكتروني" required>
+                <input type="password" id="new-password" placeholder="كلمة المرور" required>
+                <button type="submit">إنشاء حساب</button>
+            </form>
+            <p>لديك حساب؟ <a href="#" id="login-link">تسجيل الدخول</a></p>
+        </div>
+
+        <!-- إنشاء البطاقة -->
+        <div id="card-section" class="hidden">
+            <h1>إنشاء بطاقة يوم التأسيس</h1>
+            <form id="card-form">
+                <input type="text" id="card-name" placeholder="الاسم" required>
+                <input type="text" id="card-id" placeholder="رقم الهوية" required>
+                <input type="text" id="card-issue-date" placeholder="تاريخ الإصدار" required>
+                <input type="text" id="card-expiry-date" placeholder="تاريخ الانتهاء" required>
+                <button type="submit">إنشاء البطاقة</button>
+            </form>
+
+            <!-- معاينة البطاقة -->
+            <div id="card-preview" class="hidden">
+                <div class="card">
+                    <img src="assets/images/user.png" alt="صورة المستخدم" class="user-image">
+                    <div class="card-info">
+                        <h2 id="preview-name">الاسم</h2>
+                        <p id="preview-id">رقم الهوية: </p>
+                        <p id="preview-issue-date">تاريخ الإصدار: </p>
+                        <p id="preview-expiry-date">تاريخ الانتهاء: </p>
+                    </div>
+                    <div class="barcode"></div>
+                    <div class="security-strip">يوم التأسيس</div>
+                </div>
+                <button id="download-png">تحميل كصورة</button>
+                <button id="download-pdf">تحميل كPDF</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
