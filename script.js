@@ -1,3 +1,6 @@
+// تهيئة jsPDF
+const { jsPDF } = window.jspdf;
+
 // تسجيل الدخول وإنشاء الحساب
 document.getElementById('login-form').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -56,11 +59,19 @@ document.getElementById('download-png').addEventListener('click', function () {
 
 // تحميل البطاقة كPDF
 document.getElementById('download-pdf').addEventListener('click', function () {
-    const element = document.querySelector('.card');
-    html2canvas(element).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF();
-        pdf.addImage(imgData, 'PNG', 10, 10, 180, 100);
-        pdf.save('card.pdf');
+    const cardElement = document.querySelector('.card');
+    html2canvas(cardElement).then((canvas) => {
+        const imgData = canvas.toDataURL('image/png'); // تحويل البطاقة إلى صورة
+        const doc = new jsPDF(); // إنشاء كائن PDF جديد
+
+        // إضافة الصورة إلى PDF
+        doc.addImage(imgData, 'PNG', 10, 10, 180, 100); // (الصورة، النوع، X، Y، العرض، الارتفاع)
+
+        // إضافة نص إضافي (اختياري)
+        doc.setFontSize(12);
+        doc.text('بطاقة يوم التأسيس', 10, 8);
+
+        // حفظ الملف
+        doc.save('card.pdf'); // اسم الملف الذي سيتم تنزيله
     });
 });
